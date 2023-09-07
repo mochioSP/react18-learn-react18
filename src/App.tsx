@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import "./App.css";
 
 import { AutoBatchEventHandler } from "./components/AutoBatchEventHandler";
@@ -13,6 +14,9 @@ function App() {
       <hr />
       <Transition />
       <hr />
+      <Suspense fallback={<p>Now Loading...</p>}>
+        <ReactQuery />
+      </Suspense>
       <ReactQuery />
     </div>
   );

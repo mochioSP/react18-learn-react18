@@ -9,19 +9,20 @@ type Album = {
 
 const fetchAlbums = async () => {
   const result = await axios.get<Album[]>("https://jsonplaceholder.typicode.com/albums");
-  console.log(result);
   return result.data;
 };
 
 export const ReactQuery = () => {
-  const { isLoading, error, data } = useQuery<Album[]>(["albums", fetchAlbums]);
-  if (error) return <p>エラーです</p>;
-  if (isLoading) return <p>Loading...</p>;
+  const { isLoading, error, data } = useQuery<Album[]>(["albums"], fetchAlbums);
+  // if (error) return <p>エラーです</p>;
+  // if (isLoading) return <p>Loading...</p>;
 
   return (
     <div>
       <p>React Query</p>
-      {data?.map((album) => <p key={album.id}>{album.title}</p>)}
+      {data?.map((album) => (
+        <p key={album.id}>{album.title}</p>
+      ))}
     </div>
   );
 };
