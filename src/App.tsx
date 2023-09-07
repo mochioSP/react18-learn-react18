@@ -5,6 +5,7 @@ import { AutoBatchEventHandler } from "./components/AutoBatchEventHandler";
 import { AutoBatchOther } from "./components/AutoBatchOther";
 import { ReactQuery } from "./components/ReactQuery";
 import { Transition } from "./components/Transition";
+import { ErrorBoundary } from "react-error-boundary";
 
 function App() {
   return (
@@ -14,10 +15,11 @@ function App() {
       <hr />
       <Transition />
       <hr />
-      <Suspense fallback={<p>Now Loading...</p>}>
-        <ReactQuery />
-      </Suspense>
-      <ReactQuery />
+      <ErrorBoundary fallback={<h1>エラーです</h1>}>
+        <Suspense fallback={<p>Now Loading...</p>}>
+          <ReactQuery />
+        </Suspense>
+      </ErrorBoundary>
     </div>
   );
 }
