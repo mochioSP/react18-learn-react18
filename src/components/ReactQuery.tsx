@@ -40,14 +40,22 @@ export const ReactQuery = () => {
     <div style={{ display: "flex", padding: "16px" }}>
       <Sidebar />
       <div style={{ flexGrow: "1" }}>
-        <button style={todoButtonStyle} onClick={() => onClickTabButton("todo")}>
+        <button
+          style={todoButtonStyle}
+          onClick={() => onClickTabButton("todo")}
+        >
           Todo
         </button>
-        <button style={albumButtonStyle} onClick={() => onClickTabButton("album")}>
+        <button
+          style={albumButtonStyle}
+          onClick={() => onClickTabButton("album")}
+        >
           Album
         </button>
         <ErrorBoundary fallback={<h1>Todo or AlbumList エラーです</h1>}>
-          <Suspense fallback={<p>Todo or Album List Now Loading...</p>}>{selectedTab === "todo" ? <Todo /> : <AlbumList />}</Suspense>
+          <Suspense fallback={<p>Todo or Album List Now Loading...</p>}>
+            {selectedTab === "todo" ? <Todo /> : <AlbumList />}
+          </Suspense>
         </ErrorBoundary>
       </div>
     </div>
